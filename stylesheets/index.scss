@@ -1,11 +1,18 @@
-$background-color: #F4C62E;
+$background-color: #eee;
 $text-color: #444;
+$base-margin: 40px;
 
 body {
   background-color: $background-color;
-  text-align: center;
   color: $text-color;
+  margin: 0;
+	font-size: 13px;
 }
 
+@import 'reset';
+@import 'App';
+@import 'SearchForm';
 @import 'GeocodeResult';
 @import 'Map';
+@import 'HotelsTable';
+@import 'HotelsClickableTh';
