@@ -1,8 +1,7 @@
 .app {
   width: 1000px;
-  margin: 0, auto;
+  margin: $base-margin, auto, 0;
 	display: flex;
-	flex-direction: column;
 }
 
 .left-navi {

@@ -75,7 +75,7 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <div className="app">
+      <div className="search-page">
         <h1 className="app-title">ホテル検索</h1>
         <SearchForm onSubmit={place => this.handlePlaceSubmit(place)} />
         <div className="result-area">
