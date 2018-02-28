@@ -1,7 +1,7 @@
 import geolib from 'geolib';
 import Rakuten from '../lib/Rakuten';
 
-const RAKUTEN_API_ID = 'xxxxxxxxxxxxxxx';
+const RAKUTEN_API_ID = '1089312885978333356';
 
 export const searchHotelByLocation = (location) => {
   const params = {
