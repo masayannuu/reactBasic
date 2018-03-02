@@ -14,6 +14,7 @@ const render = () => {
     <SearchPage
       history={history}
       location={location}
+      onPlaceChange={place => store.dispatch({ type: 'CHANGE_PLACE', place })}
       place={state.place}
     />,
     document.querySelector('.container')

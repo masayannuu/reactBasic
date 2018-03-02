@@ -58,8 +58,9 @@ class SearchPage extends Component {
     this.setState({ name });
   }
 
-  handlePlaceChange(place) {
-    this.setState({ place });
+  handlePlaceChange(e) {
+    e.preventDefault();
+    this.props.onPlaceChange(e.target.value);
   }
 
   handlePlaceSubmit(e) {
@@ -108,7 +109,7 @@ class SearchPage extends Component {
         <h1 className="app-title">ホテル検索</h1>
         <SearchForm
           place={this.props.place}
-          onPlaceChange={place => this.handlePlaceChange(place)}
+          onPlaceChange={e => this.handlePlaceChange(e)}
           onSubmit={e => this.handlePlaceSubmit(e)}
         />
         {/*
@@ -135,7 +136,9 @@ class SearchPage extends Component {
 
 SearchPage.propTypes = {
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-  location: PropTypes.shape({ search: PropTypes.string })
+  location: PropTypes.shape({ search: PropTypes.string }),
+  onPlaceChange: PropTypes.func.isRequired,
+  place: PropTypes.string.isRequired,
 };
 
 export default SearchPage;
