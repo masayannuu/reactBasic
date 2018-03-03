@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server",
-    "lint": "./node_modules/.bin/eslint"
+    "lint": "./node_modules/.bin/eslint",
+    "lint:css": "./node_modules/.bin/stylelint"
   },
   "dependencies": {
     "axios": "^0.16.2",
