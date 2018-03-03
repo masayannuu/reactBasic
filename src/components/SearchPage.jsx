@@ -4,10 +4,10 @@ import axios from 'axios';
 import _ from 'lodash';
 import queryString from 'query-string';
 
-import SearchForm from '../components/SearchForm';
-import GeocodeResult from '../components/GeocodeResult';
-import Map from '../components/Map';
-import HotelsTable from '../components/HotelsTable';
+import SearchForm from '../containers/SearchForm';
+import GeocodeResult from './GeocodeResult';
+import Map from './Map';
+import HotelsTable from './HotelsTable';
 
 import { geocode } from '../domain/Geocode';
 import { searchHotelByLocation } from '../domain/HotelRepository';
@@ -29,18 +29,10 @@ class SearchPage extends Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = this.props.store.subscribe(() => {
-      this.forceUpdate();
-    });
-
     //const place = this.getPlaceParam();
     //if (place) {
     //  this.startSearch(place);
     //}
-  }
-
-  ComponentWillUnmout() {
-    this.unsubscribe();
   }
 
   getPlaceParam() {
@@ -64,11 +56,6 @@ class SearchPage extends Component {
 
   handleNameChange(name) {
     this.setState({ name });
-  }
-
-  handlePlaceChange(e) {
-    e.preventDefault();
-    this.props.store.dispatch({ type: 'CHANGE_PLACE', place: e.target.value });
   }
 
   handlePlaceSubmit(e) {
@@ -112,13 +99,10 @@ class SearchPage extends Component {
   }
 
   render() {
-    const state = this.props.store.getState();
     return (
       <div className="search-page">
         <h1 className="app-title">ホテル検索</h1>
         <SearchForm
-          place={state.place}
-          onPlaceChange={e => this.handlePlaceChange(e)}
           onSubmit={e => this.handlePlaceSubmit(e)}
         />
         {/*
@@ -146,11 +130,6 @@ class SearchPage extends Component {
 SearchPage.propTypes = {
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
   location: PropTypes.shape({ search: PropTypes.string }),
-  store: PropTypes.shape({
-    subscribe: PropTypes.func,
-    getState: PropTypes.func,
-    dispatch: PropTypes.func,
-  }).isRequired,
 };
 
 export default SearchPage;
